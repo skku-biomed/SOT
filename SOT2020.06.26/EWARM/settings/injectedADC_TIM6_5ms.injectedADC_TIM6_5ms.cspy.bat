@@ -25,7 +25,7 @@ if not "%~1" == "" goto debugFile
 
 @echo on 
 
-"C:\Program Files (x86)\IAR Systems\Embedded Workbench 8.3\common\bin\cspybat" -f "C:\Users\김태균\Documents\ALDrive\Download\Seungheon\EWARM\settings\injectedADC_TIM6_5ms.injectedADC_TIM6_5ms.general.xcl" --backend -f "C:\Users\김태균\Documents\ALDrive\Download\Seungheon\EWARM\settings\injectedADC_TIM6_5ms.injectedADC_TIM6_5ms.driver.xcl" 
+"C:\Program Files (x86)\IAR Systems\Embedded Workbench 8.3\common\bin\cspybat" -f "C:\Users\Younjae-Jeong\Documents\GitHub\SOT\SOT2020.06.26\EWARM\settings\injectedADC_TIM6_5ms.injectedADC_TIM6_5ms.general.xcl" --backend -f "C:\Users\Younjae-Jeong\Documents\GitHub\SOT\SOT2020.06.26\EWARM\settings\injectedADC_TIM6_5ms.injectedADC_TIM6_5ms.driver.xcl" 
 
 @echo off 
 goto end 
@@ -34,7 +34,7 @@ goto end
 
 @echo on 
 
-"C:\Program Files (x86)\IAR Systems\Embedded Workbench 8.3\common\bin\cspybat" -f "C:\Users\김태균\Documents\ALDrive\Download\Seungheon\EWARM\settings\injectedADC_TIM6_5ms.injectedADC_TIM6_5ms.general.xcl" "--debug_file=%~1" --backend -f "C:\Users\김태균\Documents\ALDrive\Download\Seungheon\EWARM\settings\injectedADC_TIM6_5ms.injectedADC_TIM6_5ms.driver.xcl" 
+"C:\Program Files (x86)\IAR Systems\Embedded Workbench 8.3\common\bin\cspybat" -f "C:\Users\Younjae-Jeong\Documents\GitHub\SOT\SOT2020.06.26\EWARM\settings\injectedADC_TIM6_5ms.injectedADC_TIM6_5ms.general.xcl" "--debug_file=%~1" --backend -f "C:\Users\Younjae-Jeong\Documents\GitHub\SOT\SOT2020.06.26\EWARM\settings\injectedADC_TIM6_5ms.injectedADC_TIM6_5ms.driver.xcl" 
 
 @echo off 
 :end
