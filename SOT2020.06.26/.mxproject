@@ -1,7 +1,7 @@
 [PreviousGenFiles]
-HeaderPath=C:/Users/±èÅÂ±Õ/Documents/ALDrive/Download/Seungheon/Inc
+HeaderPath=C:/Users/±èÅÂ±Õ/Documents/GitHub/SOT/SOT2020.06.26/Inc
 HeaderFiles=usb_host.h;usbh_conf.h;usbh_platform.h;stm32f4xx_it.h;stm32f4xx_hal_conf.h;main.h;
-SourcePath=C:/Users/±èÅÂ±Õ/Documents/ALDrive/Download/Seungheon/Src
+SourcePath=C:/Users/±èÅÂ±Õ/Documents/GitHub/SOT/SOT2020.06.26/Src
 SourceFiles=usb_host.c;usbh_conf.c;usbh_platform.c;stm32f4xx_it.c;stm32f4xx_hal_msp.c;main.c;
 
 [PreviousLibFiles]

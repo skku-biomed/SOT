@@ -28,6 +28,7 @@
 #include "stm32f4xx.h"
 #include "stm32f4xx_hal_adc.h"
 #include "stm32f4xx_it.h"
+//#include "stm32f4xx_hal_tim.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -60,6 +61,8 @@ TIM_HandleTypeDef htim6;
 UART_HandleTypeDef huart3;
 
 /* USER CODE BEGIN PV */
+
+
 
 /* USER CODE END PV */
 
@@ -123,7 +126,7 @@ int main(void)
   MX_USB_HOST_Init();
   MX_USART3_UART_Init();
   /* USER CODE BEGIN 2 */
-  HAL_TIM_Base_Start_IT(&htim6);
+ uint8_t onoff = 0;
   /* USER CODE END 2 */
 
   /* Infinite loop */
@@ -134,6 +137,9 @@ int main(void)
     MX_USB_HOST_Process();
 
     /* USER CODE BEGIN 3 */
+    HAL_UART_Receive(&huart3, &onoff, sizeof(onoff),10);
+    onoff==0?(HAL_TIM_Base_Stop_IT(&htim6)):HAL_TIM_Base_Start_IT(&htim6);
+
   }
   /* USER CODE END 3 */
 }
@@ -574,7 +580,7 @@ static void MX_USART3_UART_Init(void)
   huart3.Init.WordLength = UART_WORDLENGTH_8B;
   huart3.Init.StopBits = UART_STOPBITS_1;
   huart3.Init.Parity = UART_PARITY_NONE;
-  huart3.Init.Mode = UART_MODE_TX;
+  huart3.Init.Mode = UART_MODE_TX_RX;
   huart3.Init.HwFlowCtl = UART_HWCONTROL_NONE;
   huart3.Init.OverSampling = UART_OVERSAMPLING_8;
   if (HAL_UART_Init(&huart3) != HAL_OK)
@@ -645,7 +651,7 @@ static void MX_GPIO_Init(void)
   /*Configure GPIO pin : B1_Pin */
   GPIO_InitStruct.Pin = B1_Pin;
   GPIO_InitStruct.Mode = GPIO_MODE_EVT_RISING;
-  GPIO_InitStruct.Pull = GPIO_NOPULL;
+  GPIO_InitStruct.Pull = GPIO_PULLDOWN;
   HAL_GPIO_Init(B1_GPIO_Port, &GPIO_InitStruct);
 
   /*Configure GPIO pin : BOOT1_Pin */

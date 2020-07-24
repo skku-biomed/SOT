@@ -75,6 +75,7 @@ uint8_t DevADC[2][6];
 /* External variables --------------------------------------------------------*/
 extern HCD_HandleTypeDef hhcd_USB_OTG_FS;
 extern TIM_HandleTypeDef htim6;
+extern UART_HandleTypeDef huart3;
 /* USER CODE BEGIN EV */
 
 
@@ -222,6 +223,20 @@ void SysTick_Handler(void)
 /******************************************************************************/
 
 /**
+  * @brief This function handles USART3 global interrupt.
+  */
+void USART3_IRQHandler(void)
+{
+  /* USER CODE BEGIN USART3_IRQn 0 */
+
+  /* USER CODE END USART3_IRQn 0 */
+  HAL_UART_IRQHandler(&huart3);
+  /* USER CODE BEGIN USART3_IRQn 1 */
+
+  /* USER CODE END USART3_IRQn 1 */
+}
+
+/**
   * @brief This function handles TIM6 global interrupt, DAC1 and DAC2 underrun error interrupts.
   */
 void TIM6_DAC_IRQHandler(void)
@@ -232,7 +247,6 @@ void TIM6_DAC_IRQHandler(void)
   HAL_TIM_IRQHandler(&htim6);
   /* USER CODE BEGIN TIM6_DAC_IRQn 1 */
   HAL_GPIO_WritePin(GPIOB, PB12_Pin, GPIO_PIN_SET);  // 시간간격측정
-
         
   //mux switch와 관련된 조건들을 간소화해보았습니다. 제가 확인하긴 했지만 확인해주시면 감사하겠습니다.
   
@@ -332,6 +346,13 @@ void TIM6_DAC_IRQHandler(void)
       HAL_ADCEx_InjectedStart(&hadc1);
       HAL_ADCEx_InjectedStart(&hadc2);
       HAL_ADCEx_InjectedStart(&hadc3);
+      
+    // __HAL_ADC_GET_FLAG(&hadc1,ADC_FLAG_JSTRT);
+    //__HAL_ADC_GET_FLAG(&hadc1,ADC_FLAG_JEOC);
+
+      //help
+      
+
 
          if(__HAL_ADC_GET_FLAG(&hadc1,ADC_FLAG_JSTRT)&&__HAL_ADC_GET_FLAG(&hadc1,ADC_FLAG_JEOC))
         {
@@ -369,6 +390,7 @@ void TIM6_DAC_IRQHandler(void)
             DevADC[1][5]=InjectedADC[5];
 
         }    
+
         
         
         //------------------------------------------------------
